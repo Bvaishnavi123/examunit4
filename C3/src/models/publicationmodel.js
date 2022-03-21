@@ -2,9 +2,8 @@ const mongoose = require("mongoose")
 
 
 const publicationSchema = mongoose.Schema({
-    name : {type:mongoose.Schema.Types.ObjectId,ref:"post",required : true},
+    name : {type:String,required : true},
    
-
 },{
     timestamps: true,
     versionKey : false
