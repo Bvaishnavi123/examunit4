@@ -13,10 +13,10 @@ const register = async (req, res) => {
 
        
         if(user){
-            return res.status(400).send({message : "Email already exists" })
+            return res.status(400).send( "Email already exists" )
         }
 
-        // if new user, create it or allow to register;
+   
         user = await User.create(req.body);
 
         const token = generateToken(user)
@@ -26,3 +26,5 @@ const register = async (req, res) => {
         res.status(400).send({message : err.message})
     }
 }
+
+module.exports  = register;

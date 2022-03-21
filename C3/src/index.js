@@ -16,5 +16,7 @@ const postcontroller = require("./controllers/postcontroller")
 app.use("/posts",postcontroller)
 
 
+const registerController = require("./controllers/register")
+app.post("/register",registerController )
 
 module.exports = app;
