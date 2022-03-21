@@ -12,19 +12,7 @@ router.post("/",body("firstName").not().isEmpty().custom((value)=>{
 }),body("lastName").not().isEmpty().custom((value)=>{
     if(value.length<3 &&  value.length >30)
     {
-        throw new Error("First Name at least greater than 3 chracter ans less than 30 character")
-    }
-    return true
-}),body("lastName").not().isEmpty().custom((value)=>{
-    if(value.length<3 &&  value.length >30)
-    {
-        throw new Error("First Name at least greater than 3 chracter ans less than 30 character")
-    }
-    return true
-}),body("lastName").not().isEmpty().custom((value)=>{
-    if(value.length<3 &&  value.length >30)
-    {
-        throw new Error("First Name at least greater than 3 chracter ans less than 30 character")
+        throw new Error("Last Name at least greater than 3 chracter ans less than 30 character")
     }
     return true
 }),body("age").not().isEmpty().isNumeric().custom((value)=>{
