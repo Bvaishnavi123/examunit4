@@ -1,7 +1,7 @@
 const mongoose = require("mongoose")
 
 const todoSchema = mongoose.Schema({
-title :{type:String,required:true},//( String, required)
+title :{type:String,required:true},
 userID :{type:mongoose.Schema.Types.ObjectId,ref:"user",require:true},
 
 
