@@ -43,22 +43,22 @@ router.patch("/:id",Authenticate,async(req,res)=>{
   req.body.user_id = req.user._id
   try{
    
-   const todobyuser = await Todoanduser
+   const todobyuser = await Todoanduser.findByIdAndUpdate(req.params.id,req.body,{new:true})
     res.status(200).send(todobyuser)
 
   }catch{
-     res.status(500).send(error)
+     res.status(401).send(error)
   }
 })
 router.delete("/:id",Authenticate,async(req,res)=>{
   req.body.user_id = req.user._id
   try{
    
-   const todobyuser = await Todoanduser.create(req.body)
+   const todobyuser = await Todoanduser.findByIdAndDelete(req.params.id)
     res.status(200).send(todobyuser)
 
   }catch{
-     res.status(500).send(error)
+     res.status(401).send(error)
   }
 })
 
