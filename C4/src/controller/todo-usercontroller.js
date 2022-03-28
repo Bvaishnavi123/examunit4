@@ -31,7 +31,7 @@ router.get("/:id",Authenticate,async(req,res)=>{
   req.body.user_id = req.user._id
   try{
    
-   const todobyuser = await Todoanduser.find(req.params.id).lean().exec()
+   const todobyuser = await Todoanduser.findById(req.params.id).lean().exec()
    return  res.status(200).send(todobyuser)
 
   }catch{
