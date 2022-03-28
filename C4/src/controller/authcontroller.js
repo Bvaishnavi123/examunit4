@@ -11,13 +11,13 @@ const regeister = async(req,res)=>{
 
         if(user)
         {
-            res.status(400).send("Email Already Exists")
+            return   res.status(400).send("Email Already Exists")
         }
         const token = generateToken(user)
         user = await User.create(req.body)
         return res.status(200).send({user,token})
     } catch (error) {
-        res.status(400).send({error})
+        return res.status(400).send({error})
     }
 }
 
@@ -27,12 +27,12 @@ const login = async (req, res) => {
 
         if(!user)
         {
-            res.status(400).send("Wronge Email-Password")
+            return res.status(400).send("Wronge Email-Password")
         }
         const match = user.checkPassword(req.body.password)
 
         if(!match){
-            res.status(400).send("Wronge Email-Password")
+            return res.status(400).send("Wronge Email-Password")
         }
 
         const token = generateToken(user)

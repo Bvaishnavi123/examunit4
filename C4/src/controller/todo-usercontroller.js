@@ -8,10 +8,10 @@ router.get("/",Authenticate,async(req,res)=>{
     try{
      
      const todobyuser = await Todoanduser.find().lean().exec()
-      res.status(200).send(todobyuser)
+      return res.status(200).send(todobyuser)
 
     }catch{
-       res.status(500).send(error)
+      return res.status(500).send(error)
     }
 })
 
@@ -20,10 +20,10 @@ router.post("/",Authenticate,async(req,res)=>{
     try{
      
      const todobyuser = await Todoanduser.create(req.body)
-      res.status(200).send(todobyuser)
+     return res.status(200).send(todobyuser)
 
     }catch{
-       res.status(500).send(error)
+      return res.status(500).send(error)
     }
 })
 
@@ -32,10 +32,10 @@ router.get("/:id",Authenticate,async(req,res)=>{
   try{
    
    const todobyuser = await Todoanduser.find(req.params.id).lean().exec()
-    res.status(200).send(todobyuser)
+   return  res.status(200).send(todobyuser)
 
   }catch{
-     res.status(401).send(error)
+    return res.status(401).send(error)
   }
 })
 
@@ -44,10 +44,10 @@ router.patch("/:id",Authenticate,async(req,res)=>{
   try{
    
    const todobyuser = await Todoanduser.findByIdAndUpdate(req.params.id,req.body,{new:true})
-    res.status(200).send(todobyuser)
+   return res.status(200).send(todobyuser)
 
   }catch{
-     res.status(401).send(error)
+    return res.status(401).send(error)
   }
 })
 router.delete("/:id",Authenticate,async(req,res)=>{
@@ -55,10 +55,10 @@ router.delete("/:id",Authenticate,async(req,res)=>{
   try{
    
    const todobyuser = await Todoanduser.findByIdAndDelete(req.params.id)
-    res.status(200).send(todobyuser)
+   return res.status(200).send(todobyuser)
 
   }catch{
-     res.status(401).send(error)
+    return  res.status(401).send(error)
   }
 })
 
